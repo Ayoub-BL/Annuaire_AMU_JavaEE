@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout 
+		layout:decorator="template"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+		
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Accueil</title>
+	</head>
+	
+	<body>
+
+		<div layout:fragment="content">
+			
+			<header>
+				<div class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav">
+								<li class="active"><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{'/affichePersonne?idPersonne=' + ${session.MY_SESSION_PERSONNE.getId()}}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav">
+								<li class="active"><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{/login}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/logout}"><i class="fa fa-sign-out-alt fa-1x"></i>&nbsp;Déconnecter</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/login}"><i class="fa fa-sign-in-alt fa-1x"></i>&nbsp;Se connecter</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<div class="col-md-6">
+				<img style="width:400px;height:160px;" src="../static/img/Aix-Marseille_Université_(Logo).svg" th:src="@{/img/Aix-Marseille_Université_(Logo).svg}" alt="Aix-Marseille Université (Logo)">
+			</div>
+			
+			<div class="col-md-6">
+				<h3>Liste des parcours types</h3>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AA.html">Fiabilité et sécurité informatique (FSI)</a><br>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AA.html">Ingénierie du logiciel et des données (ILD)</a><br>
+				Responsable du parcours ILD : 
+				<b>Jean Luc MASSAT</b>
+				<img class="rof-img-mail" src="../static/img/IN18.png" th:src="@{/img/IN18.png}" alt="Adresse de Jean Luc MASSAT"/><br>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AC.html">Intelligence artificielle et apprentissage automatique (IAAA)</a><br>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AD.html">Informatique et mathématiques discrètes (IMD)</a><br>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AE.html">Computational and mathematical biology (CMB)</a><br>
+				<a href="https://formations.univ-amu.fr/ME5SIN-PRSIN5AF.html">Géométrie et informatique graphique (GIG)</a><br>
+			</div>
+			
+			
+			<div class="panel-body" style="background-color:#e3eeff; border-radius: 20px;">
+				<h3>Objectif</h3>
+				<p>Le master Informatique a pour vocation la formation de professionnels de l'informatique au niveau bac+5.
+					L'objectif est d'offrir aux étudiants un large spectre de compétences et de savoirs afin de rendre accessibles des emplois de haut niveau dans le monde de l'entreprise, ainsi que dans celui de la recherche, ou dans d'autres organisations.
+					La mention informatique offre une palette de six parcours adaptés à plusieurs secteurs de l'informatique.
+					Les diplômés auront donc accès à une grande diversité de métiers et de carrières.</p>
+				<h3>Public visé</h3>
+				<p>Le master s'adresse à des étudiants ayant une licence générale en informatique (ou équivalent). Selon les parcours, les étudiants titulaires d'une licence informatique-mathématiques, voire d'une licence de mathématiques sont également en mesure de suivre la formation.</p>
+				<h3>Conditions d'admission</h3>
+				<p>Vous trouverez plus d'information à cette adresse :<br><a href="http://masterinfo.univ-mrs.fr/candidature/">http://masterinfo.univ-mrs.fr/candidature/</a></p>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>

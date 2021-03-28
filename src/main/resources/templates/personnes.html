@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout 
+		layout:decorator="template"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+		
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Personnes</title>
+	</head>
+	
+	<body>
+	
+		<div layout:fragment="content">
+		
+			<header>
+				<div class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{'/affichePersonne?idPersonne=' + ${session.MY_SESSION_PERSONNE.getId()}}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{/login}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/logout}"><i class="fa fa-sign-out-alt fa-1x"></i>&nbsp;Déconnecter</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/login}"><i class="fa fa-sign-in-alt fa-1x"></i>&nbsp;Se connecter</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+		
+			<form action="#" th:action="@{/chercherPersonne}" method="get">
+				<label>Nom de la personne:</label>
+				<input type="hidden" name="idGroupe" th:value="${att_idGroupe}"/>
+				<input type="text" name=nomPersonne th:value="${att_nomPersonne}"/>
+				<button class="btn btn-success" style="text-shadow: 1px 1px 1px black;"><i class="fa fa-search fa-1x"></i>&nbsp;Chercher</button>
+			</form>
+			
+			<!-- IF it is there an exception -->
+			<div style="margin-top:20px;">
+				<strong class="text-danger font-bold" th:if="${att_exception}" th:text="${att_exception}"></strong>
+			</div>
+			
+			<!-- IF att_personneList is empty -->
+			<div style="margin-top:20px;">
+				<strong th:if="${att_emptyList}" class="text-danger font-bold" th:text="${att_emptyList}"></strong>
+			</div>
+			
+			<!-- IF att_personneList is not empty -->
+			<div th:if="${not #lists.isEmpty(att_personneList)}">
+				<div style="margin-top:25px;">Liste des personnes du groupe :
+					<b th:text="${att_nomGroupe}"></b>
+				</div>
+				<table class="table table-hover" style="margin-top:25px;">
+					<thead class="thead-dark" style="background-color:SkyBlue; border-radius: 1em;">
+						<tr>
+							<th>Identifiant</th><th>Nom</th><th>Prénom</th><th></th><!-- <th></th> -->
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="p:${att_personneList}">
+							<td th:text="${p.id}"></td>
+							<td th:text="${p.nom}"></td>
+							<td th:text="${p.prenom}"></td>
+							<td >
+								<a th:href="@{ affichePersonne( idPersonne=${p.id} ) }"><i class="fa fa-eye fa-1x"></i>&nbsp;Afficher</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+				<div style="margin-bottom: 60px;" class="navbar-fixed-bottom">
+					<div class="container">
+						<h5 style="margin-top:25px;border-top:2px solid SkyBlue;">Pagination</h5>
+						<ul class="nav nav-pills">
+							<li class="nav-item" th:each="pa,status:${att_pages}">
+								<a th:class="${att_page}==${status.index}?'nav-link active':'nav-link'" th:href="@{ personnes( idGroupe=${att_idGroupe}, nomPersonne=${att_nomPersonne}, page=${status.index}+1, taille=${att_taille} ) }" th:text="${status.index}+1" ></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</body>
+</html>

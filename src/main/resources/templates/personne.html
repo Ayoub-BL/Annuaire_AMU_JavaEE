@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" 
+		layout:decorator="template">
+		
+	<head>
+		<title>Informations de la personne</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	</head>
+	
+	<body>
+
+		<div layout:fragment="content">
+		
+			<header>
+				<div class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{'/affichePersonne?idPersonne=' + ${session.MY_SESSION_PERSONNE.getId()}}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{/login}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/logout}"><i class="fa fa-sign-out-alt fa-1x"></i>&nbsp;Déconnecter</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/login}"><i class="fa fa-sign-in-alt fa-1x"></i>&nbsp;Se connecter</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+				
+			<div class="panel panel-primary col-md-8 col-md-offset-2" style="border-radius: 20px 20px 20px 20px; border:0;">
+				<div class="panel-heading" style="border-radius: 20px 20px 0px 0px;">Informations de la personne</div>
+				<div class="panel-body " style="background-color:#e3eeff; border-radius: 0px 0px 20px 20px;">
+				
+					<form id="personneForm" action="#" th:action="@{/modifierPersonne}" method="get" th:object="${att_personne}" enctype="multipart/form-data">
+					
+						<input type="hidden" name="idPersonne" th:name="idPersonne" th:field="*{id}" />
+						<input type="hidden" th:name="taille" th:value="${att_taille}" />
+						<input type="hidden" th:name="page" th:value="${att_page}" />
+										
+						<div class="form-group">
+							<label class="control-label">Nom:</label> 
+							<input readOnly type="text" name="nomPersonne" id="nomPersonne" th:name="nomPersonne" th:value="nomPersonne" th:field="*{nom}" class="form-control"/>
+							<span class="text-danger" th:errors="*{nom}"></span>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label">Prènom:</label> 
+							<input readOnly type="text" name="prenomPersonne" id="prenomPersonne" th:name="prenomPersonne" th:field="*{prenom}" class="form-control"/>
+							<span class="text-danger" th:errors="*{prenom}"></span>
+						</div>
+						
+						<div class="form-group">
+							<label class="control-label">Site Web:</label> 
+							<input readOnly type="text" name="sitewebPersonne" id="sitewebPersonne" th:name="sitewebPersonne" th:field="*{siteweb}" class="form-control"/>
+							<span class="text-danger" th:errors="*{siteweb}"></span>
+						</div>
+						
+						<div class="form-group" sec:authorize="hasRole('ROLE_USER')">
+							<label class="control-label">E-mail:</label> 
+							<input readOnly type="text" name="emailPersonne" id="emailPersonne" th:name="emailPersonne" th:field="*{email}" class="form-control"/>
+							<span class="text-danger" th:errors="*{email}"></span>
+						</div>
+						
+						<div class="form-group" sec:authorize="hasRole('ROLE_USER')">
+							<label class="control-label">Date de naissance:</label> 
+							<input readOnly type="date" name="dtnPersonne" id="dtnPersonne" th:name="dtnPersonne" th:field="*{dtn}" class="form-control" required="required" min="1900-01-01" max="2010-01-01"/>
+							<span class="text-danger" th:errors="*{dtn}"></span>
+						</div>
+						
+						<div class="form-group" sec:authorize="hasRole('ROLE_USER')" th:if="${att_sessionIdPersonne} == *{id}">
+							
+							<button type="submit" class="btn btn-primary" style="text-shadow: 1px 1px 1px black;">
+							    <i class="fa fa-edit fa-1x"></i>&nbsp;Modifier
+							</button>
+							
+							<button type="reset" th:type="reset" class="btn btn-danger" name="reset" style="text-shadow: 1px 1px 1px black;" th:onclick="myFunction()">
+							    <i class="fa fa-sync fa-1x"></i>&nbsp;Rénitialiser
+							</button>
+							
+						</div>
+						
+					</form>
+
+				</div>
+			</div>
+		
+		</div>
+		
+	</body>
+	
+</html>

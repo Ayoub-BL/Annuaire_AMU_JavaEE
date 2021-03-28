@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+	<head>
+		<meta charset="UTF-8"/>
+		<title>AMU-Annuaire</title>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="icon" type="image/vnd.microsoft.icon" href="../static/img/favicon.ico" th:href="@{/img/favicon.ico}">
+	</head>
+	
+	<body>
+	
+		<div style="padding-bottom:10%; margin-left: 5%; margin-right: 5%;">
+			<section layout:fragment="content"></section>
+		</div>
+	
+		<footer id="footer">
+			
+			<div class="navbar-fixed-bottom">
+				<div class="container" style="background-color:#14679e; color: white; padding-top: 5px; padding-bottom: 5px;">
+					<small>
+						<a style="color:white; text-decoration: underline;" th:href="@{https://www.univ-amu.fr/}">Aix-Marseille Université</a> - 58, bd charles livon - 13284 marseille cedex 07 - France - tél : 33 (0) 4 91 39 65 00 - fax : 33 (0) 4 91 31 31 36 | Mentions légales
+					</small>
+					<div>Made with <i class="fa fa-heart fa-1x"></i> in Marseille-Luminy&nbsp;&nbsp;|&nbsp;&nbsp;AMU-Anuaire_v.0.0.1&nbsp;&nbsp;|&nbsp;&nbsp;Powered by <a style="color:white; text-decoration: underline;" th:href="@{#}" href="#">ayoub-software.ma</a>&nbsp;&copy;&nbsp;2019</div>
+				</div>
+			</div>
+		
+		</footer>
+
+	</body>
+	
+</html>

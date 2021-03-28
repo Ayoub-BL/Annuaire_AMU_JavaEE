@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout 
+		layout:decorator="template"
+		xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+		
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Error</title>
+	</head>
+	
+	<body>
+	
+		<div layout:fragment="content" align="center">
+		
+			<header>
+				<div class="navbar navbar-inverse">
+					<div class="container-fluid">
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{'/affichePersonne?idPersonne=' + ${session.MY_SESSION_PERSONNE.getId()}}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav">
+								<li><a th:href="@{/home}"><i class="fa fa-home fa-1x"></i>&nbsp;Accueil</a></li>
+								<li><a th:href="@{/groupes}"><i class="fa fa-users fa-1x"></i>&nbsp;Groupes</a></li>
+								<li><a th:href="@{/apropos}"><i class="fa fa-comment-dots fa-1x"></i>&nbsp;À propos</a></li>
+								<li><a th:href="@{/login}"><i class="fa fa-user-circle fa-1x"></i>&nbsp;Profile</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAuthenticated()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/logout}"><i class="fa fa-sign-out-alt fa-1x"></i>&nbsp;Déconnecter</a></li>
+							</ul>
+						</div>
+						<div sec:authorize="isAnonymous()">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a th:href="@{/login}"><i class="fa fa-sign-in-alt fa-1x"></i>&nbsp;Se connecter</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<div class="top_centered">
+				<div class="panel-body " style="background-color:#e3eeff; border-radius: 20px;">
+					<h1 style="color:red;">Quelque chose a mal tourné ! </h1>
+					<h2>Nos ingénieurs sont dessus.</h2>
+					<a href="/">Retourner à la page d'accueil</a>
+				</div>
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>
