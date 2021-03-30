@@ -18,16 +18,16 @@ Ce  projet  consiste  à  concevoir  et  à  réaliser  un  annuaire  de  person
 ### Screenshots :
 
 #### Home
-<img align="center" src="screenshots/home.png" alt="Login interface">
+<img align="center" src="screenshots/home.png" alt="Home interface">
 
 #### Listes des groupes
-<img align="center" src="screenshots/groupes.png" alt="Register interface">
+<img align="center" src="screenshots/groupes.png" alt="Groupes interface">
 
 #### Login
-<img align="center" src="screenshots/login.png" alt="Register interface">
+<img align="center" src="screenshots/login.png" alt="Login interface">
 
 #### Détails
-<img align="center" src="screenshots/details.png" alt="Register interface">
+<img align="center" src="screenshots/details.png" alt="Details interface">
 
 ## Tech
 - SpringBoot
