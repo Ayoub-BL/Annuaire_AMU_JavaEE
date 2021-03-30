@@ -10,7 +10,7 @@ Le  projet  de  gestion  d’annuaire  des  personnes  en  JEE  est  proposé  p
  
 Ce  projet  consiste  à  concevoir  et  à  réaliser  un  annuaire  de  personnes  (étudiants).  Chaque étudiant  est représenté  par  un  ensemble  d’informations  (identifiant,  nom,  prénom,  adresse électronique, site WEB, date de naissance et mot de passe) et chaque étudiant appartient à un groupe de spécialité dont le groupe est représenter aussi par un nom et un identifiant.
  
-> N'hésitez pas à faire un petit tour sur le cahier des charges et le rapport du projet pour plus de détails. Vous les trouverez dans les deux paths suivants :
+> N'hésitez pas à faire un petit tour sur le cahier des charges et le rapport du projet pour plus de détails. Veuillez les trouverez dans les deux documents PDF suivants :
  
 - [Cahier des charges]
 - [Rapport de projet]
