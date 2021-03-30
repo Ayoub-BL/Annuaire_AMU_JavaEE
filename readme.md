@@ -12,12 +12,8 @@ Ce  projet  consiste  à  concevoir  et  à  réaliser  un  annuaire  de  person
  
 > N'hésitez pas à faire un petit tour sur le cahier des charges et le rapport du projet pour plus de détails. Vous les trouverez dans les deux paths suivants :
  
-```sh
-annuaire_documents/Cdc.pdf
-```
-```sh
-annuaire_documents/Rapport.pdf
-```
+- [Cdc.pdf] - Cahier des charges
+- [Rapport.pdf] - Rapport de projet
 
 ### Screenshots :
 
@@ -54,3 +50,6 @@ Lancer phpMyAdmin puis lancer l'application sur Eclipse
  
 ## License
 **Free Software, Hell Yeah!**
+
+[Cdc.pdf]: <https://github.com/Ayoub-BL/Annuaire_AMU_JavaEE/blob/master/annuaire_documents/CdC.pdf>
+[Rapport.pdf]: <https://github.com/Ayoub-BL/Annuaire_AMU_JavaEE/blob/master/annuaire_documents/Rapport.pdf>
