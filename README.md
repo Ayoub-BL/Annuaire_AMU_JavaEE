@@ -40,7 +40,7 @@ Ce  projet  consiste  à  concevoir  et  à  réaliser  un  annuaire  de  person
  
 ## Installation
 Lancer phpMyAdmin puis lancer l'application sur Eclipse
-💡 `Vous n'avez pas besoin de créer un base de données, elle va être créer automatiquement 😉`
+💡 `Vous n'avez pas besoin de créer la base de données, elle va être créer automatiquement 😉`
  
 ## Contact
 > `boulahya.ayoub@gmail.com`
